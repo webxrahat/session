@@ -12,6 +12,12 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
+app.post("/", (req, res)=>{
+  req.send("message")
+})
+
+app.put("")
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
