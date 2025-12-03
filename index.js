@@ -1,22 +1,23 @@
 import express from "express";
 import dotenv from "dotenv";
-// import { connectDB } from "./config/connetDB.js";
-
 dotenv.config();
-// connectDB();
-
+import session from "express-session"
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+app.use(session({
+  secret: process.env.SECRET || null,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: process.env.MAXAGE }
+}))
+
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-app.post("/", (req, res)=>{
-  req.send("message")
-})
 
-app.put("")
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
