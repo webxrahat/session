@@ -14,6 +14,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+  req.session.set("mykey", "myvalue");
   res.send("Hello, World!");
 });
 
